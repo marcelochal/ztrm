@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <INCLUDES>
+    <SOBJ_NAME>LZFTE_BSMF01</SOBJ_NAME>
+    <SOBJ_NAME>LZFTE_BSMGLB</SOBJ_NAME>
+    <SOBJ_NAME>LZFTE_BSMTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFTE_BSM</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZFTE_BSM_EXT_STATEMENTDATA_GET</FUNCNAME>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IT_BUKRS</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>FTE_T_BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_STMNT_DATE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>AZDAT_EB</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IT_HOUSEBANK</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>FTE_T_HBKID</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IT_HOUSEBANKACCT</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>FTE_T_HKTID</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_STMNT_IMPORT_DATE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>EDATE_EB</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_STMNT_IMPORT_TIME</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ETIME_EB</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IT_COUNTRYCODE</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>FTE_T_BANKS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IT_CURRENCY</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>FTE_T_CURRENCY</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_USER</PARAMETER>
+       <DEFAULT>SY-UNAME</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>USER</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>ET_STATEMENT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>FTE_BSM_T_STATEMENT</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>NO_BANK_FOUND</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>NO_STATEMENT_FOUND</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>NO_AUTHORITY</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>NOTHING_FOUND</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IT_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 001</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_STMNT_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 002</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_HOUSEBANK</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 003</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_HOUSEBANKACCT</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 004</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_STMNT_IMPORT_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 005</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_STMNT_IMPORT_TIME</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 006</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_COUNTRYCODE</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 007</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IT_CURRENCY</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 008</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_USER</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 009</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ET_STATEMENT</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 010</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_BANK_FOUND</PARAMETER>
+       <KIND>X</KIND>
+       <INDEX> 011</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_STATEMENT_FOUND</PARAMETER>
+       <KIND>X</KIND>
+       <INDEX> 012</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_AUTHORITY</PARAMETER>
+       <KIND>X</KIND>
+       <INDEX> 013</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NOTHING_FOUND</PARAMETER>
+       <KIND>X</KIND>
+       <INDEX> 014</INDEX>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZFTE_BSM_GL_BALANCE_DETERMINE</FUNCNAME>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>I_HKONT</PARAMETER>
+       <TYP>HKONT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_BUKRS</PARAMETER>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_KEY_DATE</PARAMETER>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>E_GL_BALANCE</PARAMETER>
+       <TYP>ESBTR_EB</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>E_TRANS_CURRENCY</PARAMETER>
+       <TYP>RTCUR</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>E_NO_GL_BALANCE</PARAMETER>
+       <TYP>BOOLE_D</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>NO_BALANCE_AVAILABLE</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>I_HKONT</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 001</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 002</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_KEY_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 003</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>E_GL_BALANCE</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 004</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>E_TRANS_CURRENCY</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 005</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>E_NO_GL_BALANCE</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 006</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_BALANCE_AVAILABLE</PARAMETER>
+       <KIND>X</KIND>
+       <INDEX> 007</INDEX>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZFTE_BSM_GL_BALANCE_OLDGL</FUNCNAME>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>I_HKONT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>HKONT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_BUKRS</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BUKRS</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_KEY_DATE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BUDAT</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>E_GL_BALANCE</PARAMETER>
+       <TYP>ESBTR_EB</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>E_TRANS_CURRENCY</PARAMETER>
+       <TYP>RTCUR</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>E_NO_GL_BALANCE</PARAMETER>
+       <TYP>BOOLE_D</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>NO_BALANCE_AVAILABLE</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>I_HKONT</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 001</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_BUKRS</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 002</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_KEY_DATE</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 003</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>E_GL_BALANCE</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 004</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>E_TRANS_CURRENCY</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 005</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>E_NO_GL_BALANCE</PARAMETER>
+       <KIND>P</KIND>
+       <INDEX> 006</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_BALANCE_AVAILABLE</PARAMETER>
+       <KIND>X</KIND>
+       <INDEX> 007</INDEX>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>
