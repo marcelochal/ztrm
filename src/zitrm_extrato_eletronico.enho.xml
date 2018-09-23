@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>HOOK_IMPL</TOOL>
+   <SHORTTEXT>Unificação da importação do extrato eletrônico</SHORTTEXT>
+   <ORIGINAL_OBJECT>
+    <PGMID>R3TR</PGMID>
+    <ORG_OBJ_TYPE>FUGR</ORG_OBJ_TYPE>
+    <ORG_OBJ_NAME>FTE_BSM</ORG_OBJ_NAME>
+    <ORG_MAIN_TYPE>FUGR</ORG_MAIN_TYPE>
+    <ORG_MAIN_NAME>FTE_BSM</ORG_MAIN_NAME>
+    <PROGRAMNAME>SAPLFTE_BSM</PROGRAMNAME>
+   </ORIGINAL_OBJECT>
+   <ENHANCEMENTS>
+    <ENH_HOOK_IMPL>
+     <PROGRAMNAME>SAPLFTE_BSM</PROGRAMNAME>
+     <EXTID>1</EXTID>
+     <ID>1</ID>
+     <ENHMODE>D</ENHMODE>
+     <FULL_NAME>\FU:FTE_BSM_EXT_STATEMENTDATA_GET\SE:END\EI</FULL_NAME>
+     <SOURCE>
+      <item>* Projeto AGIR - GAP S4H-FIN-EFD-M-050 - Unificação da importação do extrato eletrônico</item>
+      <item/>
+      <item>IF sy-uname = &apos;FS002418&apos; OR sy-uname = &apos;BC001118&apos;.</item>
+      <item>CALL FUNCTION &apos;ZFTE_BSM_EXT_STATEMENTDATA_GET&apos;</item>
+      <item>EXPORTING</item>
+      <item>IT_BUKRS                  = IT_BUKRS</item>
+      <item>I_STMNT_DATE              = I_STMNT_DATE</item>
+      <item>IT_HOUSEBANK              = IT_HOUSEBANK</item>
+      <item>IT_HOUSEBANKACCT          = IT_HOUSEBANKACCT</item>
+      <item>I_STMNT_IMPORT_DATE       = I_STMNT_IMPORT_DATE</item>
+      <item>I_STMNT_IMPORT_TIME       = I_STMNT_IMPORT_TIME</item>
+      <item>IT_COUNTRYCODE            = IT_COUNTRYCODE</item>
+      <item>IT_CURRENCY               = IT_CURRENCY</item>
+      <item>I_USER                    = SY-UNAME</item>
+      <item>IMPORTING</item>
+      <item>ET_STATEMENT              = ET_STATEMENT</item>
+      <item>EXCEPTIONS</item>
+      <item>NO_BANK_FOUND             = 1</item>
+      <item>NO_STATEMENT_FOUND        = 2</item>
+      <item>NO_AUTHORITY              = 3</item>
+      <item>NOTHING_FOUND             = 4</item>
+      <item>OTHERS                    = 5.</item>
+      <item>ENDIF.</item>
+      <item/>
+      <item>IF sy-subrc &lt;&gt; 0.</item>
+      <item>* Implement suitable error handling here</item>
+      <item>ENDIF.</item>
+      <item/>
+      <item/>
+     </SOURCE>
+    </ENH_HOOK_IMPL>
+   </ENHANCEMENTS>
+   <SPACES>
+    <item>
+     <FULL_NAME>\FU:FTE_BSM_EXT_STATEMENTDATA_GET\SE:END\EI</FULL_NAME>
+     <SPACES>
+      <item>0</item>
+      <item>0</item>
+      <item>0</item>
+      <item>2</item>
+      <item>4</item>
+      <item>5</item>
+      <item>5</item>
+      <item>5</item>
+      <item>5</item>
+      <item>5</item>
+      <item>5</item>
+      <item>5</item>
+      <item>5</item>
+      <item>5</item>
+      <item>3</item>
+      <item>5</item>
+      <item>3</item>
+      <item>5</item>
+      <item>5</item>
+      <item>5</item>
+      <item>5</item>
+      <item>5</item>
+      <item>0</item>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+     </SPACES>
+    </item>
+   </SPACES>
+  </asx:values>
+ </asx:abap>
+</abapGit>
