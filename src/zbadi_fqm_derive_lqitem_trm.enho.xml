@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>BADI_IMPL</TOOL>
+   <SHORTTEXT>ZBADI_FQM_DERIVE_LQITEM_TRM</SHORTTEXT>
+   <SPOT_NAME>ES_FQM_DERIVE_LQITEM_TRM</SPOT_NAME>
+   <IMPL>
+    <ENH_BADI_IMPL_DATA>
+     <SPOT_NAME>ES_FQM_DERIVE_LQITEM_TRM</SPOT_NAME>
+     <BADI_NAME>BADI_FQM_DERIVE_LQITEM_TRM</BADI_NAME>
+     <IMPL_NAME>ZES_FQM_DERIVE_LQITEM_TRM</IMPL_NAME>
+     <IMPL_CLASS>ZBADI_FQM_DERIVE_LQITEM_TRM</IMPL_CLASS>
+     <ACTIVE>X</ACTIVE>
+     <IMPL_SHORTTEXT>ZES_FQM_DERIVE_LQITEM_TRM</IMPL_SHORTTEXT>
+     <IMPL_SHORTTEXT_ID>005056BE538F1EE8B1B750BEE6E869EA</IMPL_SHORTTEXT_ID>
+    </ENH_BADI_IMPL_DATA>
+   </IMPL>
+  </asx:values>
+ </asx:abap>
+</abapGit>

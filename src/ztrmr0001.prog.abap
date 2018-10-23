@@ -73,7 +73,9 @@ TYPES:
 TYPES: BEGIN OF ty_e_alv.
     INCLUDE TYPE ty_e_result.
     INCLUDE TYPE ty_e_file_upload.
-TYPES: END OF   ty_e_alv.
+TYPES: END OF   ty_e_alv,
+
+ty_ti_alv TYPE STANDARD TABLE OF ty_e_alv.
 
 **********************************************************************
 * Tabelas internas
@@ -250,6 +252,12 @@ FORM file_import_excel.
   ENDIF.
 
   MOVE-CORRESPONDING it_file_upload TO it_alv.
+
+*** Início - 19/10/2018 - Implementação de Authority-Check Projeto AGIR
+  PERFORM f_authority_check TABLES it_alv
+                            USING  '01'. "Criar
+*** Fim    - 19/10/2018 - Implementação de Authority-Check Projeto AGIR
+
 
 ENDFORM.      "file_import_excel
 
@@ -693,3 +701,68 @@ CLASS lcl_messages IMPLEMENTATION.
   ENDMETHOD.
 
 ENDCLASS.
+
+*&---------------------------------------------------------------------*
+*& Form F_AUTHORITY_CHECK
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+FORM f_authority_check TABLES p_it_alv    TYPE ty_ti_alv
+                       USING  p_atividade TYPE zag_campo.
+
+*** Constantes
+  CONSTANTS:
+    lc_t_hm_buk TYPE xuobject  VALUE 'T_HM_BUK',
+    lc_x        TYPE char1     VALUE 'X'.
+
+*** Variáveis
+  DATA:
+    lv_erro     TYPE char1,
+    lv_objeto   TYPE xuobject,
+    lv_campo1   TYPE zag_campo,
+    lv_campo2   TYPE zag_campo,
+    lv_mensagem TYPE string.
+
+*** Estruturas
+  DATA ls_dados  TYPE ty_e_alv.
+
+*** Tabelas internas
+  DATA lt_dados TYPE ty_ti_alv.
+
+  CLEAR lv_erro.
+  lt_dados[] = p_it_alv[].
+  SORT lt_dados BY company_code.
+  DELETE ADJACENT DUPLICATES FROM lt_dados COMPARING company_code.
+
+*** Verifica autorização para cada empresa
+  LOOP AT lt_dados INTO ls_dados.
+
+*** Preenche variáveis
+    lv_objeto = lc_t_hm_buk.
+    lv_campo1 = ls_dados-company_code.
+    lv_campo2 = p_atividade.
+
+*** Executa função padrão para verificação de autorizações
+    CALL FUNCTION 'ZAG_F_AUTHORITY'
+      EXPORTING
+        i_tcode    = sy-tcode
+        i_xuobject = lv_objeto
+        i_campo1   = lv_campo1
+        i_campo2   = lv_campo2
+      IMPORTING
+        e_mensagem = lv_mensagem.
+
+*** Caso o usuário não tenha autorização, exibe mensagem e interrompe o processamento
+    IF lv_mensagem IS NOT INITIAL.
+      MESSAGE i000(zfi0) WITH lv_mensagem.
+      lv_erro = lc_x.
+      EXIT.
+    ENDIF.
+
+  ENDLOOP.
+
+  IF lv_erro IS NOT INITIAL.
+    LEAVE LIST-PROCESSING.
+  ENDIF.
+
+ENDFORM.
