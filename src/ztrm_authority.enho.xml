@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>HOOK_IMPL</TOOL>
+   <SHORTTEXT>Authority</SHORTTEXT>
+   <ORIGINAL_OBJECT>
+    <PGMID>R3TR</PGMID>
+    <ORG_OBJ_TYPE>FUGR</ORG_OBJ_TYPE>
+    <ORG_OBJ_NAME>SWIC</ORG_OBJ_NAME>
+    <ORG_MAIN_TYPE>FUGR</ORG_MAIN_TYPE>
+    <ORG_MAIN_NAME>SWIC</ORG_MAIN_NAME>
+    <PROGRAMNAME>SAPLSWIC</PROGRAMNAME>
+   </ORIGINAL_OBJECT>
+   <ENHANCEMENTS>
+    <ENH_HOOK_IMPL>
+     <PROGRAMNAME>SAPLSWIC</PROGRAMNAME>
+     <EXTID>1</EXTID>
+     <ID>1</ID>
+     <ENHMODE>D</ENHMODE>
+     <FULL_NAME>\FU:SWI_READ_CONTAINER_ELEMENT\SE:END\EI</FULL_NAME>
+     <SOURCE>
+      <item>*</item>
+      <item>Data: ti_stack TYPE ABAP_CALLSTACK,</item>
+      <item>ls_stack TYPE ABAP_CALLSTACK_LINE.</item>
+      <item/>
+      <item>CALL FUNCTION &apos;SYSTEM_CALLSTACK&apos;</item>
+      <item>*  EXPORTING</item>
+      <item>*     MAX_LEVEL          = 0</item>
+      <item>IMPORTING</item>
+      <item>CALLSTACK          = ti_stack.</item>
+      <item/>
+      <item>READ TABLE ti_stack into ls_stack</item>
+      <item>WITH KEY MAINPROGRAM = &apos;SAPLFTR_BUS2042&apos;</item>
+      <item>INCLUDE     = &apos;LFTR_BUS2042U13&apos;.</item>
+      <item/>
+      <item>if sy-subrc is initial.</item>
+      <item>value = &apos;X&apos;.</item>
+      <item>endif.</item>
+     </SOURCE>
+    </ENH_HOOK_IMPL>
+   </ENHANCEMENTS>
+   <SPACES>
+    <item>
+     <FULL_NAME>\FU:SWI_READ_CONTAINER_ELEMENT\SE:END\EI</FULL_NAME>
+     <SPACES>
+      <item>0</item>
+      <item>2</item>
+      <item>8</item>
+      <item>0</item>
+      <item>2</item>
+      <item>0</item>
+      <item>0</item>
+      <item>4</item>
+      <item>6</item>
+      <item>0</item>
+      <item>2</item>
+      <item>7</item>
+      <item>16</item>
+      <item>0</item>
+      <item>2</item>
+      <item>4</item>
+      <item>2</item>
+     </SPACES>
+    </item>
+   </SPACES>
+  </asx:values>
+ </asx:abap>
+</abapGit>

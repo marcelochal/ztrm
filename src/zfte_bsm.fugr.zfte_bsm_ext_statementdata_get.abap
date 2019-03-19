@@ -1,5 +1,5 @@
 FUNCTION zfte_bsm_ext_statementdata_get.
-*"--------------------------------------------------------------------
+*"----------------------------------------------------------------------
 *"*"Interface local:
 *"  IMPORTING
 *"     REFERENCE(IT_BUKRS) TYPE  FTE_T_BUKRS OPTIONAL
@@ -18,7 +18,7 @@ FUNCTION zfte_bsm_ext_statementdata_get.
 *"      NO_STATEMENT_FOUND
 *"      NO_AUTHORITY
 *"      NOTHING_FOUND
-*"--------------------------------------------------------------------
+*"----------------------------------------------------------------------
 
   DATA:
 
@@ -349,7 +349,8 @@ FUNCTION zfte_bsm_ext_statementdata_get.
       AND    edate LE i_stmnt_import_date
       AND hbkid = l_bankaccounts-hbkid                      "n2442611
       AND hktid = l_bankaccounts-hktid                      "n2442611
-      AND xbenr = gc_extrato                                "S4H-FIN-EFD-M-050
+      AND ( xbenr = gc_extrato                              "S4H-FIN-EFD-M-050
+       OR efart  = 'M' )                                    "Chamado 1000000878
       ORDER BY azdat DESCENDING kukey DESCENDING.           "n1623108
 *       select 5 bank statements                     "n2391403
         IF l_febko-aznum NE l_old_aznum.                    "n2391403
@@ -375,7 +376,8 @@ FUNCTION zfte_bsm_ext_statementdata_get.
       AND    azdat LE i_stmnt_date
       AND hbkid = l_bankaccounts-hbkid                      "n2442611
       AND hktid = l_bankaccounts-hktid                      "n2442611
-      AND xbenr = gc_extrato                                "S4H-FIN-EFD-M-050
+      AND ( xbenr = gc_extrato                              "S4H-FIN-EFD-M-050
+       OR efart  = 'M' )                                    "Chamado 1000000878
       ORDER BY azdat DESCENDING kukey DESCENDING.           "n1623108
 *       select 5 bank statements                     "n2391403
         IF l_febko-aznum NE l_old_aznum.                    "n2391403

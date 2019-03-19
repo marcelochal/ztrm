@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <INCLUDES>
+    <SOBJ_NAME>LZGFTRM_B02042TOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZGFTRM_B02042</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZFTRM_GET_RFHAZUL</FUNCNAME>
+     <SHORT_TEXT>Get RFHAZUL</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>P_COMPANY_CODE</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BAPI2042-COMPANY_CODE</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>P_TRANSACTION</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BAPI2042-TRANSACTION</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>E_RFHAZUL</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>TB_RFHAZUL</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>P_COMPANY_CODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Empresa</STEXT>
+       <INDEX> 001</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>P_TRANSACTION</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Transação financeira</STEXT>
+       <INDEX> 002</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>E_RFHAZUL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Última operação ativa da transação financeira</STEXT>
+       <INDEX> 003</INDEX>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

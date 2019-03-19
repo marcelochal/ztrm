@@ -207,18 +207,21 @@ FORM file_validate_path USING p_file_path.
       x_error       = 1
       OTHERS        = 2.
   IF sy-subrc NE 0.
-    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+    MESSAGE ID sy-msgid TYPE 'S' NUMBER sy-msgno DISPLAY LIKE 'E'
             WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+    STOP.
   ENDIF.
 
   IF cl_gui_frontend_services=>directory_exist( directory = lv_dir ) IS INITIAL.
-    MESSAGE ID 'C$' TYPE cc_msg_error NUMBER '155' "Não foi possível abrir o file &1&3 (&2)
-      WITH p_file_path .
+    MESSAGE ID 'C$' TYPE 'S' NUMBER '155' DISPLAY LIKE cc_msg_error "Não foi possível abrir o file &1&3 (&2)
+      WITH p_file_path.
+    STOP.
   ENDIF.
 
   " check file existence
   IF cl_gui_frontend_services=>file_exist( file = lv_filename ) IS INITIAL.
-    MESSAGE ID 'FES' TYPE cc_msg_error NUMBER '000'. "O file não existe
+    MESSAGE ID 'FES' TYPE 'S' NUMBER '000' DISPLAY LIKE 'E'. "O file não existe
+    STOP.
   ENDIF.
 
 ENDFORM.                    "file_validate_path
@@ -374,6 +377,7 @@ ENDFORM.                    "alv_create_fieldcatalog
 FORM call_bapi_ftr_create USING p_test TYPE xtest.
 
   DATA:
+    ls_vwpanla             TYPE vwpanla,
     ls_security            TYPE bapi_ftr_create_security,
     ls_generalcontractdata TYPE bapi_ftr_create,
     ls_paymentdetail       TYPE bapi_ftr_paydet_create,
@@ -430,30 +434,43 @@ FORM call_bapi_ftr_create USING p_test TYPE xtest.
         ls_paymentdetail-direction = '+'.
       ENDIF.
 
-      ls_paymentdetail-payment_currency = 'BRL'.
-      MOVE-CORRESPONDING <fs_alv> TO ls_paymentdetail.
+*Start    - Marcelo Alvares - MA004818 S4D ZTRMR0001 Z_TRM - 18.02.2019 15:53
+* Some cases the payment is not necessary LIKE IOF
+      IF ls_paymentdetail-direction IS NOT INITIAL.
+*END    - Marcelo Alvares - MA004818 S4D ZTRMR0001 Z_TRM - 18.02.2019 15:53
 
-      CLEAR: it_bapi_return.
+        SELECT SINGLE * INTO ls_vwpanla
+          FROM vwpanla
+         WHERE ranl = <fs_alv>-security_id.
 
-      CALL FUNCTION 'BAPI_FTR_PAYDET_CREATE'
-        EXPORTING
-          companycodein          = <fs_alv>-company_code        " Company Code of Financial Transaction
-          financialtransactionin = <fs_alv>-transaction         " Financial Transaction Number
-          directionin            = ls_paymentdetail-direction   " FTR: BAPI Structure for Creating Payment Details
-          paymentcurrencyin      = ls_paymentdetail-payment_currency  " Currency Key
-          effectivedatein        = <fs_alv>-payment_date        " Payment Details Effective From
-          flowtypein             = lv_flow_type                 " Flow Type
-          paymentdetail          = ls_paymentdetail             " FTR: BAPI Structure for Creating Payment Details
-        TABLES
-          return                 = it_bapi_return.              " Return Parameters
+        ls_paymentdetail-payment_currency = ls_vwpanla-rewhr.
+        MOVE-CORRESPONDING <fs_alv> TO ls_paymentdetail.
 
-      PERFORM call_transaction_commit.
+        CLEAR: it_bapi_return.
 
-      LOOP AT it_bapi_return ASSIGNING <fs_bapi_return>.
-        <fs_bapi_return>-row = lv_tabix.
-      ENDLOOP.
+        CALL FUNCTION 'BAPI_FTR_PAYDET_CREATE'
+          EXPORTING
+            companycodein          = <fs_alv>-company_code        " Company Code of Financial Transaction
+            financialtransactionin = <fs_alv>-transaction         " Financial Transaction Number
+            directionin            = ls_paymentdetail-direction   " FTR: BAPI Structure for Creating Payment Details
+            paymentcurrencyin      = ls_paymentdetail-payment_currency  " Currency Key
+            effectivedatein        = <fs_alv>-payment_date        " Payment Details Effective From
+            flowtypein             = lv_flow_type                 " Flow Type
+            paymentdetail          = ls_paymentdetail             " FTR: BAPI Structure for Creating Payment Details
+          TABLES
+            return                 = it_bapi_return.              " Return Parameters
 
-      APPEND LINES OF it_bapi_return TO it_return.
+        PERFORM call_transaction_commit.
+
+        LOOP AT it_bapi_return ASSIGNING <fs_bapi_return>.
+          <fs_bapi_return>-row = lv_tabix.
+        ENDLOOP.
+
+        APPEND LINES OF it_bapi_return TO it_return.
+
+*Start  - Marcelo Alvares - MA004818 S4D ZTRMR0001 Z_TRM - 18.02.2019 15:52
+      ENDIF.
+*END    - Marcelo Alvares - MA004818 S4D ZTRMR0001 Z_TRM - 18.02.2019 15:52
 
     ELSE.
 
