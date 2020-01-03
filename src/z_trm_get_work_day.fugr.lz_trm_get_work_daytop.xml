@@ -4,8 +4,6 @@
   <asx:values>
    <PROGDIR>
     <NAME>LZ_TRM_GET_WORK_DAYTOP</NAME>
-    <STATE>A</STATE>
-    <VARCL>X</VARCL>
     <DBAPL>S</DBAPL>
     <DBNA>D$</DBNA>
     <SUBC>I</SUBC>

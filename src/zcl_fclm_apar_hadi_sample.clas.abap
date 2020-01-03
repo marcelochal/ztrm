@@ -9,7 +9,10 @@ CLASS zcl_fclm_apar_hadi_sample DEFINITION
   PRIVATE SECTION.
 ENDCLASS.
 
-CLASS zcl_fclm_apar_hadi_sample IMPLEMENTATION.
+
+
+CLASS ZCL_FCLM_APAR_HADI_SAMPLE IMPLEMENTATION.
+
 
   METHOD if_fclm_hadi_apar~flow_adjust BY DATABASE PROCEDURE FOR HDB LANGUAGE SQLSCRIPT USING
    skb1 vfclmbamaclvw.
@@ -131,7 +134,4 @@ CLASS zcl_fclm_apar_hadi_sample IMPLEMENTATION.
                 and c.transaction_date <= d.linkage_valid_to;
 
   endmethod.
-
-
 ENDCLASS.
-

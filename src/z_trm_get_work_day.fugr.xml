@@ -9,7 +9,6 @@
    <FUNCTIONS>
     <item>
      <FUNCNAME>Z_TRM_GET_WORK_DAY</FUNCNAME>
-     <SHORT_TEXT>Buscar dia útil</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>DATA_REQUERIDA</PARAMETER>
@@ -33,20 +32,14 @@
       <RSFDO>
        <PARAMETER>DATA_REQUERIDA</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Data fixada para seleção sg.período de validade</STEXT>
-       <INDEX> 001</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DATA_ESPERADA</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Data fixada para seleção sg.período de validade</STEXT>
-       <INDEX> 002</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MOT_FOUND</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Não encontrado</STEXT>
-       <INDEX> 003</INDEX>
       </RSFDO>
      </DOCUMENTATION>
     </item>

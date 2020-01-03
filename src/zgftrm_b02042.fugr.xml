@@ -3,13 +3,11 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <INCLUDES>
-    <SOBJ_NAME>LZGFTRM_B02042TOP</SOBJ_NAME>
     <SOBJ_NAME>SAPLZGFTRM_B02042</SOBJ_NAME>
    </INCLUDES>
    <FUNCTIONS>
     <item>
      <FUNCNAME>ZFTRM_GET_RFHAZUL</FUNCNAME>
-     <SHORT_TEXT>Get RFHAZUL</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>P_COMPANY_CODE</PARAMETER>
@@ -33,20 +31,14 @@
       <RSFDO>
        <PARAMETER>P_COMPANY_CODE</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Empresa</STEXT>
-       <INDEX> 001</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>P_TRANSACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Transação financeira</STEXT>
-       <INDEX> 002</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>E_RFHAZUL</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Última operação ativa da transação financeira</STEXT>
-       <INDEX> 003</INDEX>
       </RSFDO>
      </DOCUMENTATION>
     </item>

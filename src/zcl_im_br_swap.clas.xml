@@ -4,7 +4,6 @@
   <asx:values>
    <VSEOCLASS>
     <CLSNAME>ZCL_IM_BR_SWAP</CLSNAME>
-    <VERSION>1</VERSION>
     <LANGU>P</LANGU>
     <DESCRIPT>Classe de implementação para implementação add in ZBR_SWAP</DESCRIPT>
     <STATE>1</STATE>
